@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGN UP | BAZINGA</title>
+    <link rel="stylesheet" href="signup.css">
+
+</head>
+<style>
+    body{
+        padding: 0%;
+        margin: 0%;
+    }
+    
+    .container{
+       
+        background-color:rgba(46, 191, 196, 0.594);
+        border-bottom: 2px solid gray;
+    
+    }
+    .signup{
+        width: 50%;
+        margin :auto;
+        padding-top: 30px ;
+       
+    }
+    
+      
+    form{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      font-size: 2rem;;
+      font-weight: 500;
+      border: 1px solid rgba(0, 0, 0, 0.653);
+      border-radius: 2px ;
+      padding: 30px 50px ;
+      
+    
+        
+    }
+    input{
+        padding:10px 20px ;
+        margin: 1px ;
+        margin-bottom: 20px;
+        border-radius: 2px;
+        border:5px solid balck;
+    
+    
+    }
+    h1{
+        margin-top: 0px;
+        font-size: 2.4rem;
+        text-align: center;
+        padding-bottom: 10px;
+        padding-top: 10px ;
+    
+    }
+    
+    #btnn{
+        padding:15px 5px ;
+        margin-top: 30px ;
+        border-radius: 2px;
+        font-weight: 400;
+        font-size: 1.4rem;
+        border: 1px solid black;
+    }
+    #btnn:hover{
+        background-color: cornflowerblue;
+    
+    }
+    .main{
+        background-image:url("BACK.png");
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>Welcome To Sign Up Page</h1>
+
+
+    </div>
+    <div clasx="main">
+        <div class="signup">
+            <form>
+                Name:<input type="text" placeholder="enter your name" id="name" required>
+                Phone no:<input type="number" placeholder="number" id="contactno" required>
+                Email:<input type="email" placeholder="xyz@gmail.com" id="email" required>
+                Password:<input type="password" placeholder="password" id="password" required>
+                <button value="Submit" id="btnn" onclick="changehtml()" target="_blank"> SUBMIT</button>
+            </form>
+
+        </div>
+    </div>
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+        import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyBQpcUPLdgnD4KJnCVIQXnHjpLT2NkiyNs",
+            authDomain: "bazinga2-5c524.firebaseapp.com",
+            databaseURL: "https://bazinga2-5c524-default-rtdb.firebaseio.com",
+            projectId: "bazinga2-5c524",
+            storageBucket: "bazinga2-5c524.appspot.com",
+            messagingSenderId: "942427421851",
+            appId: "1:942427421851:web:4b9f692ecb74a00b45da3e"
+        };
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const auth = getAuth();
+        btnn.addEventListener('click', (e) => {
+
+
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var number = document.getElementById('contactno').value;
+            var name = document.getElementById('name').value;
+
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {              
+                    const user = userCredential.user;              
+                    set(ref(database, 'users/' + user.uid), {
+                        number: number,
+                        name: name,
+                        email: email
+                    })
+                    alert('user created');
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    alert(errorMessage);
+                    // ..
+                })
+        })
+    </script>
+
+
+</body>
+
+</html>

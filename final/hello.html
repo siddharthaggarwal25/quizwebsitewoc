@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        padding: 0%;
+        margin: 0px;
+        background-color: mintcream;
+
+    }
+    .innerheadingbar{
+        padding:20px 30px;
+        text-align: left;
+        font-size: 2.2rem;
+        font-weight: 500;
+        background-color: rgba(46, 191, 196, 0.594);
+        font-stretch: ultra-expanded;
+        
+
+    }
+    .headingbar{
+        border-bottom: 3px solid black;
+    }
+
+
+    #form{
+        display: flex;
+        flex-direction: column;
+        margin:100px 430px;
+        font-size: 1.5rem;
+    }
+    input{
+        padding: 10px ;
+        font-size: 1.1rem;
+        border-radius: 3px;
+    }
+    .something{
+        background-color : whitesmoke;
+        box-shadow: 1px 1px 1px 1px rgba(128, 128, 128, 0.753);
+    }
+    .some{
+        background-color: rgba(0, 0, 0, 0.836);
+        color: whitesmoke;
+        font-size: 1.4rem;
+        font-weight: 500  ;
+        border-radius: 3px  ;
+        box-shadow: 1px 1px 1px 1px whitesmoke;
+        
+    }
+    .some:hover{
+        background-color: cornflowerblue;
+        color: white;
+    }
+
+     
+
+</style>
+
+<body>
+
+    <div class="headingbar">
+        <div class="innerheadingbar">
+        Create  Quiz Question 
+        </div>
+    </div>
+
+    <div class="form1">
+        <form id="form" onsubmit="return false;">
+
+            <label for="userInput">Question:</label>
+            <input type="text" id="userInput" class="something"  required>
+            <br>
+            <label for="choice1">Option1:</label>
+            <input type="text" id="choice1"class="something"  required >
+            <br>
+            <label for="choice2">Option 2:</label>
+            <input type="text" id="choice2" class="something" required>
+            <br>
+            <label for="choice3">Option3:</label>
+            <input type="text" id="choice3"class="something" required ><br>
+            <label for="choice4">Option4:</label>
+            <input type="text" id="choice4"class="something" required ><br>
+            <label for="ans">Answer:</label>
+            <input type="text" id="ans"class="something"  required >
+            <br>
+            <br>
+
+
+            <input type="submit" class="some">
+        </form>
+    </div>
+
+</body>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+    import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-firestore.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyDpOkcnY-66M76SYhrwfW2z573MCxOZLS0",
+        authDomain: "hello-3bcde.firebaseapp.com",
+        databaseURL: "https://hello-3bcde-default-rtdb.firebaseio.com",
+        projectId: "hello-3bcde",
+        storageBucket: "hello-3bcde.appspot.com",
+        messagingSenderId: "431414510681",
+        appId: "1:431414510681:web:06f2a01df0782894cadd48"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore();
+    const colRef = collection(db, 'books');
+    const addBookForm = document.querySelector('#form')
+    addBookForm.addEventListener('submit', (e) => {
+        e.preventDefault()
+
+        addDoc(colRef, {
+            question: document.getElementById("userInput").value,
+            chioice1: document.getElementById("choice1").value,
+            chioice2: document.getElementById("choice2").value,
+            chioice3: document.getElementById("choice3").value,
+            chioice4: document.getElementById("choice4").value,
+            answer: document.getElementById("ans").value
+        })
+            .then(() => {
+                addBookForm.reset()
+                console.log('rest done ')
+            })
+    })
+
+</script>
+
+
+
+</html>

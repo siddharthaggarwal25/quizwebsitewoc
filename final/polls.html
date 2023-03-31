@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .innertop{
+        text-align: center;
+        font-size: 2.3rem;
+        padding :10px 0px;
+    }
+    .top{
+        background-color: rgba(46, 191, 196, 0.594);
+        border-bottom: 2px solid gray;
+    }
+    body{
+        margin: 0%;
+        padding: 0px;
+    }
+</style>
+
+<body>
+    <div class="top">
+        <div class="innertop">
+            POLLS
+        </div>
+    </div>
+
+ 
+
+</body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+    import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-firestore.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyDpOkcnY-66M76SYhrwfW2z573MCxOZLS0",
+        authDomain: "hello-3bcde.firebaseapp.com",
+        databaseURL: "https://hello-3bcde-default-rtdb.firebaseio.com",
+        projectId: "hello-3bcde",
+        storageBucket: "hello-3bcde.appspot.com",
+        messagingSenderId: "431414510681",
+        appId: "1:431414510681:web:06f2a01df0782894cadd48"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore();
+    const colRef = collection(db, 'books');
+    const rowRef = collection(db, 'score');
+
+var book=[];
+
+    getDocs(colRef)
+    .then((snapshot) => {
+
+        snapshot.docs.forEach((doc) => {
+            book.push({ ...doc.data(), id: doc.id })
+        })
+        console.log(book)    
+    }
+    )
+    var score=[];
+
+    
+
+</script>
+
+</html>

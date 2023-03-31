@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bazinga</title>
+</head>
+<style>
+    .question {
+        padding: 16px 0px;
+        font-size: 1.4rem;
+        color: rgb(3, 3, 114);
+
+    }
+
+    .answer {
+        padding: 16px 0px;
+        font-size: 1.4rem;
+        color: rgb(3, 3, 114);
+    }
+
+    body {
+        padding: 0px;
+        margin: 0px;
+        font-size: 1.4rem;
+    }
+
+    .heading {
+        border-bottom: 2px solid black;
+        background-color: rgba(46, 191, 196, 0.594);
+
+    }
+
+    .innerheading {
+        font-size: 2.3rem;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .mid {
+        padding: 50px 10px;
+
+
+    }
+
+    .innermid {
+        padding: 10px;
+
+    }
+
+
+    .innerbu {
+        text-align: center;
+
+    }
+
+    .button {
+        padding: 14px 70px;
+        margin-bottom: 30px;
+        background-color: black;
+        color: whitesmoke;
+        font-size: 1.7rem;
+    }
+
+    .button:hover {
+        background-color: cornflowerblue;
+
+    }
+    a{
+        text-decoration: none;
+        color:white
+    }
+</style>
+
+<body>
+    <div class="heading">
+        <div class="innerheading">
+            Answer Of Question
+        </div>
+    </div>
+
+    <div class="mid">
+        <div class="innermid">
+            <div>Question1:</div>
+            <div class="question" id="question1"></div>
+            <div>Ansewer:</div>
+            <div class="answer" id="answer1"></div>
+            <br> <br>
+            <div>Question2:</div>
+            <div class="question" id="question2"></div>
+            <div>Answer:</div>
+            <div class="answer" id="answer2"></div>
+            <br>
+            <br>
+            <div>Question3:</div>
+            <div class="question" id="question3"></div>
+            <div>Answer:</div>
+            <div class="answer" id="answer3"></div>
+            <br>
+            <br>
+            <div>Question4:</div>
+            <div class="question" id="question4"></div>
+            <div>Answer:</div>
+            <div class="answer" id="answer4"></div>
+            <br><br>
+            <div>Question5:</div>
+            <div class="question" id="question5"></div>
+            <div>Answer:</div>
+            <div class="answer" id="answer5"></div>
+            <br><br>
+            <div>Question6:</div>
+            <div class="question" id="question6"></div>
+            <div>Answer:</div>
+            <div class="answer" id="answer6"></div>
+            <br><br>
+            <div>Question7:</div>
+            <div class="question" id="question7"></div>
+            <div>Answer:</div>
+            <div class="answer" id="answer7"></div>
+            <br><br>
+            <div>Question8:</div>
+            <div class="question" id="question8"></div>
+            <div>Answer:</div>
+            <div class="answer" id="answer8"></div>
+            <br><br>
+            <div>Question9:</div>
+            <div class="question" id="question9"></div>
+            <div>Answer:</div>
+            <div class="answer" id="answer9"></div>
+            <br><br>
+            <div>Question10:</div>
+            <div class="question" id="question10"></div>
+            <div>Answer:</div>
+            <div class="answer" id="answer10"></div>
+        </div>
+    </div>
+
+    <div class="bu">
+        <div class="innerbu">
+            <button class="button">  <a href="http://127.0.0.1:5502/score.html">Go to score</a></button>
+        </div>
+    </div>
+
+</body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+    import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-firestore.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyDpOkcnY-66M76SYhrwfW2z573MCxOZLS0",
+        authDomain: "hello-3bcde.firebaseapp.com",
+        databaseURL: "https://hello-3bcde-default-rtdb.firebaseio.com",
+        projectId: "hello-3bcde",
+        storageBucket: "hello-3bcde.appspot.com",
+        messagingSenderId: "431414510681",
+        appId: "1:431414510681:web:06f2a01df0782894cadd48"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore();
+    const colRef = collection(db, 'books');
+    const rowRef = collection(db, 'score');
+    
+
+    var book = [];
+
+    getDocs(colRef)
+        .then((snapshot) => {
+
+            snapshot.docs.forEach((doc) => {
+                book.push({ ...doc.data(), id: doc.id })
+
+            })
+            console.log(book);
+            for (var i = 0; i <= 9; i++) {
+                var arrofques = book[i];
+                var k = i + 1;
+                var nameused = "question" + k;
+                var arrquestion = arrofques.question;
+                console.log(arrofques);
+                console.log(nameused);
+                console.log(arrquestion);
+                document.getElementById(nameused).innerHTML = arrquestion;
+
+            }
+
+            for (var i = 0; i <= 9; i++) {
+                var arrofques = book[i];
+                var k = i + 1;
+                var nameused = "answer" + k;
+                var arrquestion = arrofques.answer;
+                console.log(arrofques);
+                console.log(nameused);
+                console.log(arrquestion);
+                document.getElementById(nameused).innerHTML = arrquestion;
+
+            }
+
+        }
+        )
+
+</script>
+
+</html>

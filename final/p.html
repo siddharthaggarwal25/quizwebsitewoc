@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .bar {
+            border: 2px solid blue;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            background-color: cornflowerblue;
+        }
+
+        h5 {
+            margin: 0px;
+            font-weight: 200;
+        }
+
+        .quesnumber {
+
+            padding: 10px;
+            margin: 10px;
+
+            font-size: 1.5rem;
+        }
+
+        .timer {
+
+            padding: 10px;
+            margin: 10px;
+
+            font-size: 1.5rem;
+        }
+
+        .innercontainer {
+
+
+            width: 50%;
+            margin: auto;
+            margin-top: 50px;
+            box-shadow: 2px 2px 2px 2px darkgray;
+        }
+
+        .ques {
+
+            font-size: 1.5rem;
+            padding: 10px;
+            margin: 10px;
+            border-bottom: 2px solid black;
+        }
+
+        .interoptions {
+            display: flex;
+            flex-direction: row;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0px;
+            margin: 10px;
+
+            font-size: 1.4rem;
+        }
+
+        .buttonsreq {
+            margin: 10px;
+            padding: 20px;
+            font-size: 1.3rem;
+            padding-left: 0px;
+            margin-top: 20px;
+            display: block;
+            margin: auto;
+        }
+
+        #next {
+            padding: 10px 20px;
+            color: whitesmoke;
+            color: black;
+            font-weight: 600;
+            border-radius: 24px;
+
+            margin-left: 10px;
+
+
+        }
+
+        .done {
+            display: block;
+            text-align: center;
+            margin-top: auto;
+
+
+        }
+
+        .donee {
+            margin: 20px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 1.0rem;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 600;
+            background-color: white;
+        }
+
+        li {
+            padding: 14px;
+        }
+
+        .innercontainer {
+            background-color: rgba(128, 128, 128, 0.078);
+            border-radius: 4px;
+        }
+
+        .options {
+            margin-top: 40px;
+        }
+
+        .qwe {
+            font-size: 1.4rem;
+        }
+
+        .donee:hover {
+            background-color: darkslateblue;
+        }
+
+        #next:hover,
+        #previous:hover {
+            background-color: cornflowerblue;
+        }
+
+        #dispalytime {
+            padding-left: 5px;
+            margin: 5px;
+            font-weight: 600;
+        }
+
+        #displayquesnumber {
+            padding-left: 5px;
+            font-weight: 600;
+            font-size: 1.4rem;
+            ;
+
+        }
+        .demo{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="bar">
+            <div class="quesnumber">
+                <h5 class="quesnumberr"> Ques number: <span id="displayquesnumber"></span> </h5>
+            </div>
+            <div class="timer">
+                <h5 class="timerr">Time Left:<span id="dispalytime"></span></h5>
+            </div>
+        </div>
+        <div class="innercontainer">
+            <div class="ques">
+                <div class="queshere"><a class="qwe">Ques :</a><span id="hereisques">Here is ques</span> </div>
+            </div>
+            <div class="options">
+                <div class="inneroptions">
+                    <ul>
+                        <li><input type="radio" class="op" id="op1" name="option" value="option">
+                            <label class="opvalue" for="op1" id="options1">option1 </label>
+                        </li>
+                        <li><input type="radio" class="op" id="op2" name="option" value="option">
+                            <label class="opvalue" for="op2" id="options2">option2 </label>
+                        </li>
+                        <li><input type="radio" class="op" id="op3" name="option" value="option">
+                            <label class="opvalue" for="op3" id="options3">option3 </label>
+                        </li>
+                        <li><input type="radio" class="op" id="op4" name="option" value="option">
+                            <label class="opvalue" for="op4" id="options4">option4 </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="buttonsreq">
+
+                <button class="next" id="next" onclick="checkButton()">Next</button>
+            </div>
+        </div>
+    </div>
+    <div class="done">
+        <button class="donee"> SUBMIT</button>
+    </div>
+    <div class="demo"></div>
+    <!-- //javascirpt starts here -->
+
+</body>
+<script>
+    //console.log("test");
+    var alltheques = [
+        {
+            quesnumber: "what is my name",
+            optionnumber1: "sid",
+            optionnumber2: "sidd",
+            optionnumber3: "sidddd",
+            optionnumber4: "sid agg",
+            answernumber: 'sid'
+        },
+        {
+            quesnumber: "what is my hobby",
+            optionnumber1: "fwef",
+            optionnumber2: "sidd",
+            optionnumber3: "siqewdfqwdd",
+            optionnumber4: "sid aggefqe",
+            answernumber: 'sidd'
+        },
+        {
+            quesnumber: "what ",
+            optionnumber1: "sid",
+            optionnumber2: "sidd",
+            optionnumber3: "sidddd",
+            optionnumber4: "sid agg",
+            answernumber: "sidddd"
+        },
+        {
+            quesnumber: "what 4",
+            optionnumber1: "sid",
+            optionnumber2: "sidd",
+            optionnumber3: "sidddd",
+            optionnumber4: "sid agg",
+            answernumber: "sidddd"
+        },
+    ]
+    //timer
+    var constantMinute = 10;
+    let time = constantMinute * 60;
+    const countdown = document.getElementById('dispalytime');
+    setInterval(updatecountdown, 1000)
+    function updatecountdown() {
+        var minutes = Math.floor(time / 60);
+        let seconds = time % 60;
+        countdown.innerHTML = `${minutes}:${seconds}`;
+        time--;
+        
+    }
+    //main
+    var i = 0;
+    var score = 0;
+    var demovariable;
+    nextquesplz(0);
+
+
+    function nextquesplz(i) {
+        document.getElementById('displayquesnumber').innerHTML = i + 1;
+        var quesnum = alltheques[i];
+
+        var quesvalue = quesnum.quesnumber;
+        document.getElementById('hereisques').innerHTML = quesvalue;
+
+
+        var variable1 = quesnum.optionnumber1;
+        document.getElementById('options1').innerHTML = variable1;
+        document.getElementById('op1').value = variable1;
+
+        var variable2 = quesnum.optionnumber2;
+        document.getElementById('options2').innerHTML = variable2;
+        document.getElementById('op2').value = variable2;
+
+        var variable3 = quesnum.optionnumber3;
+        document.getElementById('options3').innerHTML = variable3;
+        document.getElementById('op3').value = variable3;
+
+        var variable4 = quesnum.optionnumber4;
+        document.getElementById('options4').innerHTML = variable4;
+        document.getElementById('op4').value = variable4;
+
+        var answernum = quesnum.answernumber;
+       document.getElementsByClassName('demo').innerHTML=answernum;
+       
+       console.log(document.getElementsByClassName('demo').innerHTML);
+    }
+    var answernumberrrr=document.getElementsByClassName('demo').innerHTML;
+
+//onclick
+    function checkButton() {
+        var radioButtonGroup = document.getElementsByName("option");
+        var checkedRadio = Array.from(radioButtonGroup).find(
+            (radio) => radio.checked
+        );
+        var realansofquestion = (checkedRadio.value);
+        
+
+        if (checkedRadio != null) {
+            console.log('ans selected'); 
+            if (realansofquestion == answernumberrrr) {
+                i++;
+            
+                score = score + 1;
+                
+                if(i<(alltheques.length )){
+                nextquesplz(i);
+                }
+                else{
+                    window.location.href="http://127.0.0.1:5500/score3.html";
+                }
+            }
+            else {
+                score = score + 0;
+                i++;
+
+                if(i<(alltheques.length )){
+                    nextquesplz(i);
+                    }
+                    else{
+                        window.location.href="http://127.0.0.1:5500/score3.html";
+                    }
+                
+
+
+            }
+            console.log(score);
+        }
+
+    }
+</script>
+
+</html>

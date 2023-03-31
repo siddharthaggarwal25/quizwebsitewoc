@@ -1,0 +1,43 @@
+<html>
+<head>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+</head>
+<body>
+  <form>
+    <label for="from_name">Your Name:</label>
+    <input type="text" name="from_name" id="from_name"><br>
+
+    <label for="from_email">Your Email:</label>
+    <input type="email" name="from_email" id="from_email"><br>
+
+    <label for="subject">Subject:</label>
+    <input type="text" name="subject" id="subject"><br>
+
+    <label for="message">Message:</label>
+    <textarea name="message" id="message"></textarea><br>
+
+    <button type="submit" onclick="sendEmail(); return false;">Send Email</button>
+  </form>
+
+  <script>
+    function sendEmail() {
+      const from_name = document.getElementById("from_name").value;
+      const from_email = document.getElementById("from_email").value;
+      const subject = document.getElementById("subject").value;
+      const message = document.getElementById("message").value;
+
+      Email.send({
+        Host: "smtp.gmail.com",
+        Username: "your_email@gmail.com",
+        Password: "your_password",
+        To: "recipient_email@gmail.com",
+        From: `${from_name} <${from_email}>`,
+        Subject: subject,
+        Body: message
+      }).then(
+        message => alert("Email sent successfully!")
+      );
+    }
+  </script>
+</body>
+</html>

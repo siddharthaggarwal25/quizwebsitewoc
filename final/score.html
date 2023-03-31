@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+    <title>Document</title>
+
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+
+    <script type="text/javascript">
+        function sendEmail() {
+            Email.send({
+                Host: "smtp.gmail.com",
+                Username: "aggarwalsiddharth49@gmail.com",
+                Password: "siddharth_25",
+                To: "mayankgupta2904@gmail.com",
+                From: "aggarwalsiddharth49@gmail.com",
+                Subject: "Sending Email using javascript",
+                Body: "Well that was easy!!",
+            })
+                .then(function (message) {
+                    alert("mail sent successfully")
+                });
+        }
+    </script>
+
+
+</head>
+<style>
+    .graph {
+        width: 50%;
+        display: block;
+        margin: auto;
+        padding-top: 50px;
+
+    }
+
+    .heading {
+        border-bottom: 2px solid black;
+    }
+
+    .innerheading {
+        background-color: rgba(46, 191, 196, 0.594);
+        padding: 20px 0px;
+        font-size: 2.3rem;
+        text-align: center;
+    }
+
+    body {
+        padding: 0%;
+        margin: 0%;
+    }
+
+    .button {
+        margin-top: 50px;
+    }
+
+
+
+    .innerbutton {
+        text-align: center;
+    }
+
+    .b {
+        padding: 10px 40px;
+        color: white;
+        background-color: lightseagreen;
+
+        font-size: 1.4rem;
+    }
+
+    .b:hover {
+        background-color: darkcyan;
+    }
+
+    a {
+        text-decoration: none;
+        color: whitesmoke;
+    }
+
+    .qwer {
+        text-align: center;
+        background-color: lightseagreen;
+        color: aliceblue;
+        padding: 10px 42px;
+        border-radius: 2px;
+        font-size: 1.4rem;
+    }
+
+    .qwert {
+        text-align: center;
+        padding-top: 30px;
+    }
+
+    .qwer:hover {
+        background-color: darkcyan;
+    }
+</style>
+
+<body>
+    <div class="heading">
+        <div class="innerheading">
+            Leaderboard
+        </div>
+    </div>
+
+
+    <div class="graph">
+        <div>
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+
+
+    <div class="button">
+        <div class="innerbutton">
+            <div class="fle">
+                <button class="b">
+                    <a href="front.html">
+                        Go to home
+                    </a>
+                </button>
+            </div>
+            
+        </div>
+    </div>
+    <div class="qwert">
+        <input type="button" value="Send Email" class="qwer" onclick="sendEmail()">
+       
+    </div>
+    <div class="qwert">
+        <input type="button" value="Give feedback" class="qwer" id="givefeedback">
+    </div>
+
+
+
+</body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+    import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-firestore.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyDpOkcnY-66M76SYhrwfW2z573MCxOZLS0",
+        authDomain: "hello-3bcde.firebaseapp.com",
+        databaseURL: "https://hello-3bcde-default-rtdb.firebaseio.com",
+        projectId: "hello-3bcde",
+        storageBucket: "hello-3bcde.appspot.com",
+        messagingSenderId: "431414510681",
+        appId: "1:431414510681:web:06f2a01df0782894cadd48"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore();
+    const colRef = collection(db, 'books');
+    const rowRef = collection(db, 'score');
+    var scoreboard = [];
+    var scoreofuser = [];
+    var nameofuser = [];
+
+    getDocs(rowRef)
+        .then((snapshot) => {
+
+            snapshot.docs.forEach((doc) => {
+                scoreboard.push({ ...doc.data(), id: doc.id })
+
+
+
+            })
+
+            for (var i = 0; i < (scoreboard.length); i++) {
+                var number = scoreboard[i];
+                nameofuser.push(number.name)
+            }
+
+
+            for (var i = 0; i < (scoreboard.length); i++) {
+                var numberr = scoreboard[i];
+                scoreofuser.push(numberr.value)
+            }
+
+
+            var xValues = nameofuser;
+            var yValues = scoreofuser;
+
+
+            new Chart("myChart", {
+                type: "bar",
+                data: {
+                    backgroundColor: "black",
+                    labels: xValues,
+                    datasets: [{
+
+                        data: yValues
+                    }]
+                },
+                options: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: "score of users"
+                    }
+                }
+            });
+
+            console.log(scoreboard);
+            console.log(nameofuser);
+            console.log(scoreofuser)
+        }
+        )
+
+
+    function sendEmail() {
+        Email.send({
+            Host: "smtp.gmail.com",
+            Username: "aggarwalsiddharth49@gmail.com",
+            Password: "siddharth_25",
+            To: 'mayankgupta2904@gmail.com',
+            From: "aggarwalsiddharth49@gmail.com",
+            Subject: "Test email",
+            Body: "iit ism "
+        }).then(
+            message => alert(message)
+        );
+    }
+
+   document.getElementById('givefeedback').addEventListener("click" ,function(){
+    window.location.href="http://127.0.0.1:5502/feeback.html"
+   })
+
+</script>
+
+</html>

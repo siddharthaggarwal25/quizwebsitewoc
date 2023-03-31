@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bazinga</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<style>
+    body {
+        margin: 0%;
+        padding: 0%;
+    
+    }
+    header {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: rgba(46, 191, 196, 0.594);
+        border-bottom: 2px solid rgba(0, 0, 0, 0.386);
+        font-family: 'Playfair Display', serif;
+        position: static;
+    
+    }
+    
+    .left {
+        /* border: 2px solid black; */
+        width: 30%;
+    }
+    
+    .mid {
+        /* border: 2px solid black; */
+        width: 50%;
+    
+    }
+    
+    .right {
+        /* border: 2px solid black; */
+        width: 20%;
+    
+    
+    }
+    
+    .logo {
+        width: 20px;
+        padding: 10px 20px;
+        padding-bottom: 2px;
+    }
+    
+    .navigationbar {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        margin: 0px;
+        padding-top: 15px;
+    
+    
+    }
+    
+    .logoname {
+        padding: 0px 20px;
+        font-size: 22px;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    
+    .btn {
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.769);
+        color: white;
+        border-radius: 10px;
+        padding: 10px 5px;
+        font-size: 23px;
+        padding: 10px 20px;
+        font-weight: 300;
+        position: absolute;
+        right: 25px;
+        top: 10px;
+    
+    }
+    
+    button {
+        padding-left: 20px;
+    }
+    
+    .li1 {
+        padding: 5px 30px;
+        text-decoration: none;
+        color: black;
+        font-size: 25px;
+        ;
+    }
+    .li1:hover{
+        color: cornflowerblue;
+    }
+    .btn:hover{
+        background-color: cadetblue
+        ;
+    }
+    
+    
+    
+    
+    
+    
+    .content{
+    /* border: 2px black solid; */
+    display: flex;
+    width: 100%;
+    height: 50vh;
+    margin-top: 20px ;
+    /* flex-wrap: wrap; */
+    }
+    .image{
+        /* border: 2px black solid; */
+    width: 40%;
+    padding-left:150px ;
+    padding-top: 10px ;
+    }
+    .words {
+        /* border: 2px black solid; */
+        padding: 20px 20px ;
+        width:55%;
+     
+    }
+    .imagefor{
+        width: 400px;
+    }
+    .words1{
+        font-size: 55px;
+        color: rgba(16, 24, 52, 0.75);
+        padding: 20px ;
+        padding-right: 30px ;
+    }
+    .words2{
+        color: rgba(16, 24, 52, 0.75);
+        padding: 20px ;
+        line-height: 1.4em;
+    
+    }
+    
+    
+    
+    
+    .sign{
+        background-color: rgb(236, 237, 239);
+        display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+        
+    }
+    .button21{
+        display: block;
+        /* border: 2px black solid; */
+        margin: 20px ;
+        width: 45%; 
+        
+    
+        
+    }
+    .image21{
+      
+        /* border: 2px black solid/; */
+        margin: 30px ;
+        /* margin-right: */
+        width: 45%;
+        padding: 20px ;
+    
+       
+    }
+    .imptext{
+        font-size: 3rem;
+        /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+        font-family: 'Times New Roman', Times, serif;
+        margin-left: 70px ;
+        padding: 30px 
+    
+    }
+    
+    .button1{
+        /* position: absolute; */
+        right:40px ;
+        width:300px ;
+    
+    }
+    .button2{
+        width:300px;
+        height:70px ;
+        background-color: rgba(0, 0, 0, 0.831);
+        color: white;
+        padding: 5px 10px ;
+        border-radius: 10px ;
+        font-size: 30px ;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+       border-radius: 8px;
+        position: absolute;
+        right: 14% ;
+        text-decoration: none;
+    
+    }
+    .button2:hover{
+        background-color: cornflowerblue;
+    }
+    .foot{
+        height:5vh;
+        background-color: rgba(46, 191, 196, 0.594);
+        border-bottom: 5px solid  black;
+    
+    
+    }
+    p{
+        padding-top: 10px ;
+        padding-left: 20px;
+    }
+    a{
+        text-decoration: none;
+    }
+    .btnn{
+        color:white;
+    }
+    
+    .playquiznow{
+        background-color: rgb(236, 237, 239);
+      
+       margin-top:15px; 
+    }
+    .innerplayquiznow{
+        display: block;
+        text-align: center;
+        padding: 12px 0px ;
+    }
+    .playbutton{
+        text-align: center;
+        padding:15px 50px ;
+        font-size: 1.6rem;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.721);
+        border-radius: 8px;
+ 
+    }
+    .playbutton:hover{
+        background-color: cornflowerblue;
+        color:whitesmoke;
+        
+    }
+</style>
+<body>
+    <header>
+        <div class="left">
+            <div>
+                <img src="logo3..png" alt="img" class="logo">
+                <div class="logoname">
+                    Bazinga
+                </div>
+            </div>
+        </div>
+        <div class="mid ">
+            <ul class="navigationbar">
+                <li class="li1"><a href="front.html" class="li1">Home</a></li>
+                <li class="li1"><a href="about.html" class="li1"> About us</a></li>
+                <li class="li1"><a href="callus.html" class="li1"> Call us</a></li>
+            </ul>
+        </div>
+        <div class="right">
+            <button class="btn"><a href="login.html" class="btnn"> Login</a> </button>
+
+        </div>
+
+    </header>
+    <div class="content">
+        <div class="words">
+            <div class="words1">
+                Create a Quiz to Test Your Audience
+            </div>
+            <div class="words2">
+                Create interactive quizzes designed to be enjoyable and dynamic, no matter if you want to test your
+                colleagues knowledge, run a fun quiz with your friends, or help students study.
+            </div>
+        </div>
+        <div class="image">
+            <img src="https://images.ctfassets.net/rvt0uslu5yqp/4vWv6JgZ0R6deyaERApreJ/3981c9d29e7a99bd8bcc7a2349ce665e/Mentimeter_Applications_Web_Quiz_HeroImage_2021__1_.png?fm=webp&w=1920&q=75"
+                alt=" logo" srcset="" class="imagefor">
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="sign">
+        <div class="image21">
+            <img src="logo2..png" alt="logo" srcset=""  class="logo2">
+        </div>
+        <div class="button21">
+            <div class="imptext">
+                The online quiz maker that's easy to use, fun and fully customizable
+            </div class="button1">
+            <button class="button2"><a href="signup.html" class="btnn">Sign up for free</a></button>
+        </div>
+    </div>
+    <div class="playquiznow">
+        <div class="innerplayquiznow">
+            <button class="playbutton">
+                <a href="game.html" class="btnn">
+                Play or Create
+                </a>
+            </button>
+        </div>
+    </div>
+
+   <footer>
+    <div class="foot">
+        <p> @copyright</p>
+    </div>
+   </footer>
+</body>
+
+</html>
